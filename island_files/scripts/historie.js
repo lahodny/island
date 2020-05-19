@@ -1,4 +1,3 @@
-// Vytvořte pole datových objektů v platných formátech JSON (otestujte jejich validitu např. zde: https://jsonformatter.curiousconcept.com/)
 // Historické události
 const events = [
     {
@@ -140,31 +139,36 @@ $(function () {
 
     /* Při kliknutí na ikonu nebo odkaz dojde k následujícím akcím: */
     $("#udalosti tr:even").on("click", function () {
-        /* Ze všech řádků tabulky se odstraní dvě uvedené třídy */
-        $("#udalosti tr").removeClass("bg-secondary");
-        /* Tyto dvě třídy sepřidají jen rodičovskému řádku (.parents("tr")) toho (this) prvku, na který zrovna ukázala myš */
-        $(this).addClass("bg-secondary");
-        $(this).next().addClass("bg-secondary");
-        $(".event-name i").removeClass("fas, fa-chevron-down");
-        $(".event-name i").addClass("fas, fa-chevron-right");
-        $(this).children().children().children(".event-name i").removeClass("fas, fa-chevron-right");
-        $(this).children().children().children(".event-name i").addClass("fas, fa-chevron-down");
+        if ($(this).hasClass("bg-secondary")) {
+            return;
+        }
+        else {
+            /* Ze všech řádků tabulky se odstraní dvě uvedené třídy */
+            $("#udalosti tr").removeClass("bg-secondary");
+            /* Tyto dvě třídy sepřidají jen rodičovskému řádku (.parents("tr")) toho (this) prvku, na který zrovna ukázala myš */
+            $(this).addClass("bg-secondary");
+            $(this).next().addClass("bg-secondary");
+            $(".event-name i").removeClass("fas, fa-chevron-down");
+            $(".event-name i").addClass("fas, fa-chevron-right");
+            $(this).children().children().children(".event-name i").removeClass("fas, fa-chevron-right");
+            $(this).children().children().children(".event-name i").addClass("fas, fa-chevron-down");
 
-        /* Nejprve zajistíme skrytí všech detailů událostí */
-        $("#obrazky .row").hide();
+            /* Nejprve zajistíme skrytí všech detailů událostí */
+            $("#obrazky .row").hide();
 
-        let index = ($('tr').index(this) / 2);
-        $("#obrazky .row:nth-child(" + (index + 1) + ")").show();
+            let index = ($('tr').index(this) / 2);
+            $("#obrazky .row:nth-child(" + (index + 1) + ")").show();
 
-        $("tbody tr:odd").hide();
-        $(this).next().children("td").children("p").hide();
-        /* Poté ukážeme pouze ten detail, který následuje po prvku, na který zrovna ukázala myš */
-        /* Zde je použito tzv. traverzování - metodou parent() nejprve "traverzujeme" na rodiče aktivního prvku (odstavec), 
-           poté metodou next() vybereme nejbližšího následujícího sourozence (odstavec s detailem) */
-        /* Zároveň zde, ale i na jiných místech, využíváme tzv. řetězení (chaining), kdy můžeme volat několik metod v řadě */
+            $("tbody tr:odd").hide();
+            $(this).next().children("td").children("p").hide();
+            /* Poté ukážeme pouze ten detail, který následuje po prvku, na který zrovna ukázala myš */
+            /* Zde je použito tzv. traverzování - metodou parent() nejprve "traverzujeme" na rodiče aktivního prvku (odstavec), 
+               poté metodou next() vybereme nejbližšího následujícího sourozence (odstavec s detailem) */
+            /* Zároveň zde, ale i na jiných místech, využíváme tzv. řetězení (chaining), kdy můžeme volat několik metod v řadě */
 
-        $(this).next().show();
-        $(this).next().children("td").children("p").slideDown();
+            $(this).next().show();
+            $(this).next().children("td").children("p").slideDown();
+        }
     });
 
 
@@ -224,12 +228,6 @@ $(function () {
 
 
 
-
-})
-
-
-
-$(window).resize(function () {
     if (($(window).width() <= 500) && (!$("tbody tr:odd td").is(".bigger"))) {
         $("tbody tr:odd td:even").remove();
         $("tbody tr:odd td").attr('colspan', 2).addClass("bigger").children().addClass("pl-2");
@@ -239,4 +237,8 @@ $(window).resize(function () {
         $("tbody tr:odd").prepend("<td></td>");
         $("tbody tr:odd td:odd").attr('colspan', 1).removeClass("bigger");
     }
-});
+
+})
+
+
+
