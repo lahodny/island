@@ -71,6 +71,6 @@ $(function () {
      * 5. Hodně zdaru! :-)
      */
     $(".btn-secondary").on("click", () => {
-        $("body,.btn-secondary").addClass("flip");
+        $("body").addClass("flip");
     });
 })
