@@ -38,7 +38,7 @@ const events = [
 const heroes = [
     {
         "name": "Hafþór Júlíus Björnsson",
-        "birth": "26.    1988",
+        "birth": "26. 11. 1988",
         "death": "",
         "biography": "Hafþór Júlíus Björnsson je islandský profesionální silák a herec. Je prvním člověkem, který ve stejném kalendářním roce získal Arnold Strongman Classic, nejsilnější muž Evropy a nejsilnější muž světa. Hrál Gregor The Mountain Clegane v HBO seriálu Hra o trůny po dobu pěti sezón. Je také bývalým profesionálním hráčem basketbalu. Dne 2. května 2020 Hafþór v jeho posilovně na Islandu zvedl 501 kilogramů na mrtvý tah a stanovil tak nový světový rekord.",
         "portrait": "the_mountain.png",
