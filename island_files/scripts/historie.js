@@ -140,7 +140,7 @@ $(function () {
     /* Při kliknutí na ikonu nebo odkaz dojde k následujícím akcím: */
     $("#udalosti tr:even").on("click", function () {
         if ($(this).hasClass("bg-secondary")) {
-            return;
+            return 0;
         }
         else {
             /* Ze všech řádků tabulky se odstraní dvě uvedené třídy */
