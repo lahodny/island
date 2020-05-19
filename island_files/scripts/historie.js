@@ -38,6 +38,7 @@ const events = [
 const heroes = [
     {
         "name": "Hafþór Júlíus Björnsson",
+        "job": "Silák",
         "birth": "26. 11. 1988",
         "death": "",
         "biography": "Hafþór Júlíus Björnsson je islandský profesionální silák a herec. Je prvním člověkem, který ve stejném kalendářním roce získal Arnold Strongman Classic, nejsilnější muž Evropy a nejsilnější muž světa. Hrál Gregor The Mountain Clegane v HBO seriálu Hra o trůny po dobu pěti sezón. Je také bývalým profesionálním hráčem basketbalu. Dne 2. května 2020 Hafþór v jeho posilovně na Islandu zvedl 501 kilogramů na mrtvý tah a stanovil tak nový světový rekord.",
@@ -45,6 +46,7 @@ const heroes = [
     },
     {
         "name": "Magnús Ver Magnússon",
+        "job": "Silák",
         "birth": "23. 4. 1963",
         "death": "",
         "biography": "Magnús Ver Magnússo je bývalý islandský powerlifter a silák. Jako čtyřnásobný vítěz soutěže World's Strongest Man je jednou z nejznámějších osobností siláctví. Magnús je nyní také známý jako rozhodčí World's Strongest Man (od roku 2017). Byl také rozhodčím při pokoření světového rekordu na mrtvý tah (2.5. 2020 - Hafþór Júlíus Björnsson).",
@@ -52,6 +54,7 @@ const heroes = [
     },
     {
         "name": "Jón Páll Sigmarsson",
+        "job": "Silák",
         "birth": "28. 4. 1960",
         "death": "16. 1. 1993",
         "biography": "Jón Páll Sigmarsson byl profesionální silák, powerlifter a kulturista, který jako první člověk vyhrál World's Strongest Man čtyřikrát. Je uznávaný jako jeden z největších osobností siláctví vůbec. Stal se islandským sportovcem roku 1981 a byl jedním z nejznámějších islandských atletů. V roce 2012 se stal členem síně slávy World's Strongest Man.",
@@ -59,6 +62,7 @@ const heroes = [
     },
     {
         "name": "Benedikt Magnússon",
+        "job": "Silák",
         "birth": "4. 6. 1983",
         "death": "",
         "biography": "Benedikt Magnússon je silák a powerlifter. Je držitelem světového rekordu na raw mrtvý tah ( bez použití speciálního dresu a trhaček). Stanovil také světový rekord na mrtvý tah (461 kg, 2014), následující rok jej však překonal Eddie Hall, když zvedl o jeden kilogram více. Nyní se připravuje na World Deadlift Championships, kde chce na mrtvý tah zvednout 528 kg.",
@@ -66,6 +70,7 @@ const heroes = [
     },
     {
         "name": "Magnús Scheving",
+        "job": "Herec",
         "birth": "10. 11. 1964",
         "death": "",
         "biography": "Magnus se narodil v Reykjavíku, ale vyrůstal v malém městě Borgarnes. V roce 1992 se stal islandským šampionem v aerobní gymnastice. O rok později skandinávským mistrem a poté dokonce i dvakrát mistrem Evropy v roce 1994 a 1995. Byl také zvolen islandským sportovcem roku 1994. Je také generální ředitel a zakladatel Lazy Town Entertainment. Tato společnost vyrábí knihy, videa, hry a sportovní potřeby, pomocí nich propaguje fitness a zdravý životní styl pro děti. Magnus je také tvůrcem show LAZY TOWN, kde hraje Sportacuse.",
@@ -73,6 +78,7 @@ const heroes = [
     },
     {
         "name": "Stefán Karl Stefánson",
+        "job": "Herec",
         "birth": "10. 7. 1975",
         "death": "21. 8. 2018",
         "biography": "Stefán Karl Stefánson byl herec a zpěvák Islandského původu známý především díky roli Robbieho Rottena v dětském seriále LazyTown. Kariéra Stefána Karla Stefánsona začala v roce 1994, kdy pracoval jako loutkář pro televizi. Později ho Magnus Schevinge pozval, aby ztvárnil jednu z postav v druhé hře LazyTown. Scheving vytvořil hry kvůli jeho obavám z mladší generace Islandu, která postrádala dostatečné fyzické cvičení. Stefán Karl vysvětlil, že [Scheving] chtěl, aby děti byly zdravější, a tak vytvořil muzikál LazyTown.",
@@ -80,6 +86,7 @@ const heroes = [
     },
     {
         "name": "Hjalti Árnason",
+        "job": "",
         "birth": "",
         "death": "",
         "biography": "",
@@ -87,6 +94,7 @@ const heroes = [
     },
     {
         "name": "Ari Gunnarsson",
+        "job": "",
         "birth": "",
         "death": "",
         "biography": "",
@@ -169,7 +177,7 @@ $(function () {
     /* Druhá část stránky obsahuje seznam slavných postav a vedle něj se po kliknutí zobrazuje karta s podrobnějším profilem osobnosti */
     /* Nejprve jsou načtena jména osobností z proměnné heroes do seznamu */
     heroes.forEach((hero) => {
-        $("#postavy .list-group").append(`<li class="list-group-item rounded-0 font-weight-bold">${hero.name}</li>`);
+        $("#postavy .list-group").append(`<li class="list-group-item rounded-0 font-weight-bold"><span class="name">${hero.name}</span><span class="float-right badge badge-secondary">${hero.job}</span></li>`);
     });
 
     /* Funkce zajistí načtení dat o vybrané osobnosti a jejich správné zobrazení ve struktuře karty */
@@ -207,7 +215,7 @@ $(function () {
         /* A nyní přidáním třídy active zvýrazníme právě ten prvek (this), na který bylo kliknuto */
         $(this).addClass("active");
         /* Do proměnné person se uloží textová hodnota (tj. jméno osoby) toho (this) objektu, na který uživatel kliknul */
-        let person = $(this).text();
+        let person = $(this).children(".name").text();
         /* Změna údajů na profilové kartě podle jména aktuálně vybrané osobnosti (proměnná person) */
         fillPersonCard(person);
 
