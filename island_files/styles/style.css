@@ -79,7 +79,7 @@ tr:nth-child(odd) {
   border: none;
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 767px) {
   .list-group li:first-child {
     border: none;
   }
