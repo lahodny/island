@@ -98,7 +98,6 @@ const heroes = [
 $(function () {
     /* V první části je tabulka s významnými událostmi z dějin dané země */
     /* Data jsou do tabulky načtena z proměnné events */
-    /* Všimněte si, že v bloku .event-evaluation je použit ternární operátor, který rozhoduje o zobrazení ikony + nebo -*/
     events.forEach((event) => {
         /* Metoda append() přidává nové prvky do vybrané částí stránky (vždy za už existující obsah) */
         $("#udalosti tbody").append(`<tr>
@@ -119,53 +118,44 @@ $(function () {
             <img src="island_files/images/historie/events/${event.images[i]}" alt="${event.event}" class="img-fluid">
             </div>`);
         }
-
     });
 
-
-
-    /* Po načtení stránky se skryjí všechny detaily událostí, kromě prvního */
-
+    /* Po načtení stránky se skryjí všechny detaily a obrázky událostí, kromě prvních, a těm se přidají třídy pro změnu pozadí a ikony */
     $("#obrazky .row").hide();
     $("#obrazky .row").eq(0).show();
-
     $(".event-detail").hide();
     $("tbody tr:odd").hide();
-
     $("tbody tr:odd").eq(0).show();
     $(".event-detail").eq(0).show().parents("tr").prev().addClass("bg-secondary");
     $(".event-detail").eq(0).show().parents("tr").addClass("bg-secondary");
     $(".event-name i").eq(0).removeClass("fas, fa-chevron-right").addClass("fas, fa-chevron-down");
 
-    /* Při kliknutí na ikonu nebo odkaz dojde k následujícím akcím: */
+    /* Při kliknutí na řádek tabulky dojde k následujícím akcím: */
     $("#udalosti tr:even").on("click", function () {
+        /* Pokud už je řádek zobrazen, nice se nestane */
         if ($(this).hasClass("bg-secondary")) {
             return 0;
         }
         else {
-            /* Ze všech řádků tabulky se odstraní dvě uvedené třídy */
+            /* Ze všech řádků tabulky se odstraní třída pro změnu pozadí */
             $("#udalosti tr").removeClass("bg-secondary");
-            /* Tyto dvě třídy sepřidají jen rodičovskému řádku (.parents("tr")) toho (this) prvku, na který zrovna ukázala myš */
+            /* Tato třída se přidá řádku, na který zrovna klikla myš, a řádku po něm (detailu událostí) */
             $(this).addClass("bg-secondary");
             $(this).next().addClass("bg-secondary");
-            $(".event-name i").removeClass("fas, fa-chevron-down");
-            $(".event-name i").addClass("fas, fa-chevron-right");
-            $(this).children().children().children(".event-name i").removeClass("fas, fa-chevron-right");
-            $(this).children().children().children(".event-name i").addClass("fas, fa-chevron-down");
+            /* Dále se změní všechny ikony (doprava) a pouze ikona kliknutého řadku bude jiná (dolů) */
+            $(".event-name i").removeClass("fas, fa-chevron-down").addClass("fas, fa-chevron-right");
+            $(this).children().children().children(".event-name i").removeClass("fas, fa-chevron-right").addClass("fas, fa-chevron-down");
 
-            /* Nejprve zajistíme skrytí všech detailů událostí */
+            /* Skrytí všech obrázků */
             $("#obrazky .row").hide();
-
+            /* Zjistíme index právě kliknutého řádku a zobrazíme pouze jemu příslušné obrázky */
             let index = ($('tr').index(this) / 2);
             $("#obrazky .row:nth-child(" + (index + 1) + ")").show();
-
+            /* Skryjeme také řádek s detaily i detaily samotné, abychom měli vždy efekt .slideDown() */
             $("tbody tr:odd").hide();
             $(this).next().children("td").children("p").hide();
-            /* Poté ukážeme pouze ten detail, který následuje po prvku, na který zrovna ukázala myš */
-            /* Zde je použito tzv. traverzování - metodou parent() nejprve "traverzujeme" na rodiče aktivního prvku (odstavec), 
-               poté metodou next() vybereme nejbližšího následujícího sourozence (odstavec s detailem) */
-            /* Zároveň zde, ale i na jiných místech, využíváme tzv. řetězení (chaining), kdy můžeme volat několik metod v řadě */
-
+            /* Poté ukážeme pouze ten detail, který následuje po prvku, na který zrovna klikla myš */
+            /* Využíváme tzv. řetězení (chaining), kdy můžeme volat několik metod v řadě */
             $(this).next().show();
             $(this).next().children("td").children("p").slideDown();
         }
@@ -177,7 +167,7 @@ $(function () {
 
 
     /* Druhá část stránky obsahuje seznam slavných postav a vedle něj se po kliknutí zobrazuje karta s podrobnějším profilem osobnosti */
-    /* Nejprve jsou načtena jména osobností z proměnné heroes do seznamu upraveného pomocí tříd Bootstrapu */
+    /* Nejprve jsou načtena jména osobností z proměnné heroes do seznamu */
     heroes.forEach((hero) => {
         $("#postavy .list-group").append(`<li class="list-group-item rounded-0 font-weight-bold">${hero.name}</li>`);
     });
@@ -186,9 +176,8 @@ $(function () {
     function fillPersonCard(person) {
         /* Do proměnné hero se z pole heroes načte objekt o osobnosti, která byla vyhledána podle jména */
         let hero = heroes.find(item => { return item.name === person });
-        /* Metoda html() umožnuje vložení HTML kódu (odpovídá innerHTML() v JS) */
         $(".card-title").empty();
-        /* Metoda text() umožnuje vložení "holého" textu (odpovídá innerText() v JS) */
+        /* Zjistíme, co se nachází ve stringu hero.death a pokud je prázdný, tak místo něj napíšeme "součastnost" */
         let death = `${hero.death}`;
         if (death == "") {
             $(".card-title").append(`<div class="row"><div class="col-sm-6"><h5>${hero.name}</h5></div><div class="col-sm-6 font-weight-bold">${hero.birth} - součastnost
@@ -226,19 +215,17 @@ $(function () {
     });
 
 
-
-
-    if (($(window).width() <= 500) && (!$("tbody tr:odd td").is(".bigger"))) {
+    /* Pokud bude šířka obrazovky menší než 500px, odstraní se prázdná buňka (remove)
+    a druhá zabere dva sloupce (nastavením atributu colspan) a přidáme odsazení
+    ,podle kterého také zjišťujeme, jestli už je buňka rozšířená */
+    if (($(window).width() <= 500) && (!$("tbody tr:odd td").hasClass(".pl-2"))) {
         $("tbody tr:odd td:even").remove();
-        $("tbody tr:odd td").attr('colspan', 2).addClass("bigger").children().addClass("pl-2");
+        $("tbody tr:odd td").attr('colspan', 2).children().addClass("pl-2");
     }
 
-    else if (($(window).width() > 500) && ($("tbody tr:odd td").is(".bigger"))) {
+    else if (($(window).width() > 500) && ($("tbody tr:odd td").hasClass(".pl-2"))) {
         $("tbody tr:odd").prepend("<td></td>");
-        $("tbody tr:odd td:odd").attr('colspan', 1).removeClass("bigger");
+        $("tbody tr:odd td:odd").attr('colspan', 1);
     }
 
 })
-
-
-
