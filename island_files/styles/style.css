@@ -21,27 +21,108 @@ hr {
 .font-weight-bold {
   font-weight: 600 !important;
 }
+/*
+.regions td:nth-child(1) {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.regions tr:nth-child(1) td {
+  text-decoration-color: #ff4444;
+}
+.regions tr:nth-child(2) td {
+  text-decoration-color: #ffbb33;
+}
+.regions tr:nth-child(3) td {
+  text-decoration-color: #00c851;
+}
+.regions tr:nth-child(4) td {
+  text-decoration-color: #33b5e5;
+}
+.regions tr:nth-child(5) td {
+  text-decoration-color: #2bbbad;
+}
+.regions tr:nth-child(6) td {
+  text-decoration-color: #4285f4;
+}
+.regions tr:nth-child(7) td {
+  text-decoration-color: #aa66cc;
+}
+.regions tr:nth-child(8) td {
+  text-decoration-color: #7c7c7c;
+}
+*/
+.regions tbody tr:last-of-type {
+  border-bottom: 1.5px solid #dee2e6 !important;
+}
+
+.bi-x {
+  position: relative;
+  left: 0.4rem;
+}
+
+.hovered {
+  fill: #e2e6e9 !important;
+}
+
+.clicked {
+  fill: #b6c0c8 !important;
+}
+
+.regions {
+  border-top: none;
+}
+
+.regions tbody tr td:nth-child(1),
+.bi-x {
+  cursor: pointer;
+}
+
+.regions tbody tr:nth-child(1) {
+  border-left: 2px solid #d46889;
+}
+.regions tr:nth-child(2) {
+  border-left: 2px solid #46b88f;
+}
+.regions tr:nth-child(3) {
+  border-left: 2px solid #a1cd8c;
+}
+.regions tr:nth-child(4) {
+  border-left: 2px solid #ddbea8;
+}
+.regions tr:nth-child(5) {
+  border-left: 2px solid #ea907c;
+}
+.regions tr:nth-child(6) {
+  border-left: 2px solid #eebc82;
+}
+.regions tr:nth-child(7) {
+  border-left: 2px solid #e6e19f;
+}
+.regions tr:nth-child(8) {
+  border-left: 2px solid #efb0a1;
+}
 
 /* HISTORIE */
 /* UDALOSTI */
-tbody {
+#udalosti tbody {
   background-color: #f0f2f4 !important;
 }
 
-tr {
+#udalosti tr {
   border-bottom: 1px solid #e2e6e9;
 }
 
-td {
+#udalosti td {
   border: none !important;
 }
 
-tr:nth-last-child(1),
-tr:nth-last-child(2) {
+#udalosti tr:nth-last-child(1),
+#udalosti tr:nth-last-child(2) {
   border: none !important;
 }
 
-tr:nth-child(odd) {
+#udalosti tr:nth-child(odd) {
   cursor: pointer;
   user-select: none;
 }
@@ -228,8 +309,4 @@ footer a:hover {
 .btn-secondary {
   background-color: #529ec4;
   border: none;
-}
-
-.flip {
-  transform: rotate(180deg);
 }
