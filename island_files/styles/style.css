@@ -18,9 +18,35 @@ hr {
   background-color: #e2e6e9;
 }
 
-.font-weight-bold {
+.font-weight-bold,
+.regions thead th {
   font-weight: 600 !important;
 }
+
+.regions tbody tr td:nth-child(1):hover {
+  text-decoration: underline;
+}
+
+.navbar-icon {
+  bottom: 0.4rem;
+}
+
+.navbar-name {
+  margin-left: 3rem !important;
+}
+
+@media only screen and (max-width: 575px) {
+  .navbar-icon {
+    position: relative !important;
+    display: inline !important;
+    bottom: 0.1rem;
+  }
+
+  .navbar-name {
+    margin-left: 0rem !important;
+  }
+}
+
 /*
 .regions td:nth-child(1) {
   text-decoration: underline;
@@ -53,7 +79,7 @@ hr {
 }
 */
 .regions tbody tr:last-of-type {
-  border-bottom: 1.5px solid #dee2e6 !important;
+  border-bottom: 1px solid #dee2e6 !important;
 }
 
 .bi-x {

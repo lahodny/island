@@ -186,8 +186,10 @@ $(function () {
         let hero = heroes.find(item => { return item.name === person });
         $(".card-title").empty();
         /* Zjistíme, co se nachází ve stringu hero.death a pokud je prázdný, tak místo něj napíšeme "součastnost" */
-        let death = `${hero.death}`;
-        if (death == "") {
+        if (hero.death == "" && hero.birth == "") {
+            $(".card-title").append(`<div class="row"><div class="col-sm-6"><h5>${hero.name}</h5></div></div>`);
+        }
+        else if (hero.death == "") {
             $(".card-title").append(`<div class="row"><div class="col-sm-6"><h5>${hero.name}</h5></div><div class="col-sm-6 font-weight-bold">${hero.birth} - součastnost
             </div></div>`);
         }
@@ -195,12 +197,16 @@ $(function () {
             $(".card-title").append(`<div class="row"><div class="col-sm-6"><h5>${hero.name}</h5></div><div class="col-sm-6 font-weight-bold">${hero.birth} - ${hero.death}
             </div></div>`);
         }
-
         $(".card-text").text(hero.biography);
         /* Vyprázdní se oblast s galerií fotek spojených s danou osobností */
         $(".gallery").empty();
         /* V cyklu budou přidány nové bloky s fotkami osobnosti */
-        $(".gallery").append(`<img src ="island_files/images/historie/portraits/${hero.portrait}" alt ="${hero.name}" class="img-fluid pt-0 pb-3 py-sm-3">`);
+        if (`${hero.portrait}` == "") {
+            return;
+        }
+        else {
+            $(".gallery").append(`<img src ="island_files/images/historie/portraits/${hero.portrait}" alt ="${hero.name}" class="img-fluid pt-0 pb-3 py-sm-3">`);
+        }
     }
 
     /* Po načtení stránky bude jako aktivní označena první osobnost v seznamu */
