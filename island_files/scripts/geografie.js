@@ -1,10 +1,16 @@
 /* Data ve formě polí JS objektů (JSON) */
 let regions = [
     {
+        "id": "Reykjavík",
+        "city": "Reykjavík",
+        "image": "reykjavik.jpg",
+        "text": "Reykjavík je hlavní a největší město ostrovního státu Island. Leží při pobřeží zálivu Faxaflói v Atlantském oceánu na jihozápadě země poblíž Evropy. Město je se svou polohou 64° 08' severní šířky nejseverněji položeným hlavním městem světa a v rámci Evropy nejzápadnějším. Žije zde přibližně 129 tisíc obyvatel."
+    },
+    {
         "id": "Höfuðborgarsvæðið",
         "city": "Höfuðborgarsvæðið",
-        "image": "reykjavik.jpg",
-        "text": "Reykjavická aglomerace, v islandštině Höfuðborgarsvæðið (česky: region hlavního města), je aglomerace islandského hlavního města Reykjavík a jeden z islandských regionů. V aglomeraci Reykjavíku žije 60 % obyvatelstva celého Islandu. Do aglomerace patří Reykjavík a dalších 6 obcí: Álftanes: 2 361 obyvatel Garðabær: 9 913 obyvatel Hafnarfjörður: 24 839 obyvatel Kópavogur: 28 561 obyvatel Mosfellsbær: 8 147 obyvatel Seltjarnarnes: 4 428 obyvatel Reykjavík: 117 721 obyvatel Celkem žije v aglomeraci o rozloze 1 062 km² 195 970 obyvatel. Hustota zalidnění je 185 obyv./km² (informace jsou z prosince 2007)."
+        "image": "höfuðborgarsvæðið.jpg",
+        "text": "Reykjavická aglomerace, v islandštině Höfuðborgarsvæðið (česky: region hlavního města), je aglomerace islandského hlavního města Reykjavík a jeden z islandských regionů. V aglomeraci Reykjavíku žije 60 % obyvatelstva celého Islandu. Do aglomerace patří Reykjavík a dalších 6 obcí: Álftanes, Garðabær, Hafnarfjörður, Kópavogur, Mosfellsbær, Seltjarnarnes a Reykjavík. Celkem žije v aglomeraci o rozloze 1 062 km² 195 970 obyvatel."
     },
     {
         "id": "Vestfirðir",
@@ -22,13 +28,13 @@ let regions = [
         "id": "Norðurland-vestra",
         "city": "Norðurland vestra",
         "image": "norðurland_vestra.jpg",
-        "text": "Norðurland vestra (severozápadní Island ) je jedním z osmi regionů Islandu. Pro oblast je významné její největší a hlavní město Sauðárkrókur. Město bylo pojmenováno podle blízké řeky Sauðá. Nejstarší osídlení území pochází již z doby Vikingů. Díky výhodné poloze na pobřeží tu již během dánského monopolu na Islandu (1602–1787) byla umístěna obchodní stanice, nicméně většinou se zde obchodovalo ilegálně. V roce 1858 bylo osadě uděleno povolení k obchodování a v roce 1871 se zde usadil první stálý obyvatel.V roce 1900 zde žilo již více jak 400 obyvatel. Město je nyní významným centrem obchodu a služeb v oblasti. Hlavním ekonomickým odvětvím je rybolov, dále například mlékařství nebo lehký průmysl. Ze služeb jsou zde zastoupeny například informační technologie a finanční nebo konzultační služby."
+        "text": "Norðurland vestra (severozápadní Island) je jedním z osmi regionů Islandu. Pro oblast je významné její největší a hlavní město Sauðárkrókur. Město bylo pojmenováno podle blízké řeky Sauðá. Nejstarší osídlení území pochází již z doby Vikingů. Město je nyní významným centrem obchodu a služeb v oblasti. Hlavním ekonomickým odvětvím je rybolov, dále například mlékařství nebo lehký průmysl. Ze služeb jsou zde zastoupeny například informační technologie a finanční nebo konzultační služby."
     },
     {
         "id": "Norðurland-eystra",
         "city": "Norðurland eystra",
-        "image": "Goðafoss.jpg",
-        "text": "Norðurland eystra (severovýchodní Island) je jedním z největších regionů Islandu. Největším městem je Akureyri s 17 300 obyvateli. Akureyri je čtvrté největší město a také obec na Islandu, obec má však celý název Akureyrarkaupstaður. Akureyri se nachází při pobřeží fjordu Eyjafjörður a je obklopeno horami, nejvyšší z nich měří 1213 m n. m. Od severního polárního kruhu je vzdálen pouze 98 km. Při sčítání lidu v dubnu 2008 zde žilo 17 304 obyvatel. Akureyri má přezdívku Hlavní město Severního Islandu, protože je druhou největší aglomerací na Islandu po aglomeraci Reykjavíku, která se nachází na jihozápadě země. Akureyri je po městech Reykjavík, Kópavogur a Hafnarfjörður čtvrtým nejlidnatějším městem a pátou nejlidnatější obcí."
+        "image": "goðafoss.jpg",
+        "text": "Norðurland eystra (severovýchodní Island) je jedním z největších regionů Islandu. Největším městem je Akureyri s 17 300 obyvateli. Akureyri je čtvrté největší město a také obec na Islandu, obec má však celý název Akureyrarkaupstaður. Akureyri se nachází při pobřeží fjordu Eyjafjörður a je obklopeno horami, nejvyšší z nich měří 1213 m n. m. Od severního polárního kruhu je vzdálen pouze 98 km. Při sčítání lidu v dubnu 2008 zde žilo 17 304 obyvatel."
     },
     {
         "id": "Suðurnes",
@@ -43,16 +49,10 @@ let regions = [
         "text": "Suðurland (doslovně: Jižní Island) s rozlohou 24,256 km2 je největším regionem Islandu. 1. ledna roku 2020 činil počet obyvatel 28 399. Největším městem je Selfoss, centrum obchodu, služeb a průmyslu. Nachází se zde restaurace a kavárny, plavecký bazén, golfové hřiště a kino. 29. května 2008 město postihlo silné zemětřesení o síle 6,3 Richterovy škály. Zemětřesení nikoho neusmrtilo, ale napáchalo mnoho škod."
     },
     {
-        "id": "Suðurland",
-        "city": "Suðurland",
-        "image": "plzen-znak.png",
-        "text": "Plzeň je známá jako průmyslové a pivovarnické město. Společnost Škoda Transportation a další firmy pokračují v tradici legendární Škodovky, na druhé straně krajské metropole se pak vaří známá piva Prazdroj a Gambrinus. Spodně kvašený světlý ležák se označuje jako pivo plzeňského typu, celosvětově pak jako Pilsner nebo Pils, podle německého jména města Pilsen. Plzeň má i podstatný kulturní význam. Nacházejí se tu početné kulturní domy a divadla. Ve městě sídlí také biskupství plzeňské diecéze. Vysoké školství zastupují Západočeská univerzita a Lékařská fakulta Univerzity Karlovy. V roce 2015 byla Plzeň (společně s belgickým Monsem) Evropským hlavním městem kultury. Současné historické jádro města má pravidelnou síť ulic s obdélníkovým náměstím Republiky uprostřed (139 × 193 m), jemuž vévodí katedrála sv. Bartoloměje s nejvyšší kostelní věží v České republice."
-    },
-    {
         "id": "Vesturland",
         "city": "Vesturland",
         "image": "kirkjufell.jpg",
-        "text": "Vesturland je jedním z osmi regionů Islandu. Náchází se na jeho západním pobřeží. Jako jediný region, jehož největší město (Arkanes) není jeho hlavním městem. Je také často vzhledáván turisty, kteří zde cestují z blízkého Reykjavíku"
+        "text": "Vesturland je jedním z osmi regionů Islandu. Náchází se na jeho západním pobřeží. Jako jediný region, jehož největší město (Arkanes) není jeho hlavním městem. Je také často vzhledáván turisty, kteří zde cestují z blízkého Reykjavíku."
     }
 ];
 
@@ -219,7 +219,7 @@ $(function () {
                             d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
                     </svg> </span>
             <div class="mt-3">${region.text}</div>
-            <div class=""><img src="./island_files/images/geografie/${region.image}" class="img-fluid"></div>`)
+            <div class=""><img src="./island_files/images/geografie/${region.image}" class="img-fluid my-3"></div>`)
         });
         $('#info').fadeIn(fadeInTime);
         $("#mapa-island path").removeClass('hovered');
