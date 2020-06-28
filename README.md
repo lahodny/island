@@ -1,7 +1,7 @@
 # Jednoduchá stránka o Islandu
 
 <a href="#"> <img src="island_files/images/mockup/pc.jpg"> </a>
-### ...působivá na jakémkoliv zařízení
+
 <a href="#"> <img src="island_files/images/mockup/tablet_mobile.jpg"> </a>
 
 ## Použité technologie:
